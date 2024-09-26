@@ -5,7 +5,6 @@ import crypto from "crypto";
 interface CreateLinkServiceRequest {
   link: string;
   description: string;
-  shortedLink: string;
 }
 
 interface CreateLinkServiceResponse {
@@ -21,9 +20,9 @@ export class CreateLinkService {
 
   async execute({ link, description }: CreateLinkServiceRequest): Promise<CreateLinkServiceResponse> {
     const shortLink = this.generateShortLink();
-    const shortenedLink = `http://localhost:3333/${shortLink}`;
+    const shortedLink = `http://localhost:3333/${shortLink}`;
 
-    const linkCreate = await this.linkRepository.create({ link, description, shortenedLink });
+    const linkCreate = await this.linkRepository.create({ link, description, shortedLink });
 
     return { linkCreate };
   }

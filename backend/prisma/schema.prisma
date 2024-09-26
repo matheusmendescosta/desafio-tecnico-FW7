@@ -16,6 +16,7 @@ datasource db {
 model Link {
   id          String  @id @default(uuid())
   link        String
+  shortedLink String  @unique
   description String?
 
   @@map("link")
